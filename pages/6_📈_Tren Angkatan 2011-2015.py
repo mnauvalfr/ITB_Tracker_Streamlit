@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import sys
-sys.path.append(r'C:\Users\muhru\OneDrive\Documents\Magang TracerStudy\SourceDataMei\streamlit\Tracer Study\pages\backend' )
+#sys.path.append(<GANTI DENGAN FILE DI KOMPUTER ANDA> )
 from grapher import GrapherTracer, DataframeInitializer
 st.set_page_config(page_title="Plotting Demo", page_icon="📈")
 st.title("Data Tren User Survey")
