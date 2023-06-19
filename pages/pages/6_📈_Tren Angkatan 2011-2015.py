@@ -47,14 +47,38 @@ listGraph = ["-", "Status Pekerjaan", "Data Responden",
              "Waktu Tunggu Mendapatkan Pekerjaan (Sesudah Lulus)", "Kategori Perusahaan"]
 
 ################################################################################################
+inputFakultas = st.selectbox('Fakultas', fakultas)
+if inputFakultas == fakultas[0]:
+    inputProdi = st.selectbox('Program Studi', prodiFITB)
+elif inputFakultas == fakultas[1]:
+    inputProdi = st.selectbox('Program Studi', prodiFMIPA)
+elif inputFakultas == fakultas[2]:
+    inputProdi = st.selectbox('Program Studi', prodiFSRD)
+elif inputFakultas == fakultas[3]:
+    inputProdi = st.selectbox('Program Studi', prodiFTI)
+elif inputFakultas == fakultas[4]:
+    inputProdi = st.selectbox('Program Studi', prodiFTSL)
+elif inputFakultas == fakultas[5]:
+    inputProdi = st.selectbox('Program Studi', prodiFTMD)
+elif inputFakultas == fakultas[6]:
+    inputProdi = st.selectbox('Program Studi', prodiFTTM)
+elif inputFakultas == fakultas[7]:
+    inputProdi = st.selectbox('Program Studi', prodiSAPPK)
+elif inputFakultas == fakultas[8]:
+    inputProdi = st.selectbox('Program Studi', prodiSBM)
+elif inputFakultas == fakultas[9]:
+    inputProdi = st.selectbox('Program Studi', prodiSF)
+elif inputFakultas == fakultas[10]:
+    inputProdi = st.selectbox('Program Studi', prodiSITH)
+elif inputFakultas == fakultas[11]:
+    inputProdi = st.selectbox('Program Studi', prodiSTEI)
+
 
 ######################################################################################################################
 
 # Display the selected values
-inputFakultas = st.session_state["Fakultas"]
-inputProdi = st.session_state["Jurusan"]
-st.write('Fakultas:', inputFakultas)
-st.write('Prodi:', inputProdi )
+    st.write('Fakultas:', inputFakultas)
+    st.write('Prodi:', inputProdi)
 # st.write('Selected Option 3:', selected_option_3)
 # st.write('Selected Option 4:', option_1+2)
 
