@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
 from dataframeinitializer import DataframeInitializer
+import plotly.express as px
 # matplotlib.use('TkAgg')  # or any other GUI backend of your choice
 
 
@@ -368,7 +369,7 @@ class GrapherTracer(DataframeInitializer):
         st.pyplot(fig)
 
     def draw_company_category_data(self):
-
+    
         # create sample data
         categoryCompany = ['Lokal', 'Nasional', 'Internasional']
         years = ['2018', '2019', '2020', '2021', '2022']
@@ -421,6 +422,20 @@ class GrapherTracer(DataframeInitializer):
             [0.0, -0.2, 0.9, 0]), loc='lower center', fontsize=20, ncol=3)
 
         st.pyplot(fig)
+
+    def draw_company_field_data(self):
+        field = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U']
+        years = ['2018', '2019', '2020', '2021', '2022']
+        
+        companyfield = pd.DataFrame(self.valueCompanyField2018_Prodi)
+        st.dataframe(companyfield)
+        #companyfield["sum"] =companyfield.sum(axis =1)
+        ##hitung persentasi
+        #persencompanyfield = companyfield.div(companyfield["sum"], axis=0)*100
+        #persencompanyfield.pop("sum")
+        #fig = px.bar(persencompanyfield.T, x=years, y=field, barmode='stack', text_auto=True)
+
+        #fig.show()
 
 # class GrapherUser(DataframeInitializer):
 #     def __init__(self, dfUser2018, dfUser2019, dfUser2020, dfUser2021, dfUser2022, prodi):

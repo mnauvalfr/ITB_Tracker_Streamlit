@@ -395,3 +395,86 @@ class DataframeInitializer:
         self.valueCompanyCat_Prodi = np.array([valueCompanyCat2018_Prodi, valueCompanyCat2019_Prodi,
                                                valueCompanyCat2020_Prodi, valueCompanyCat2021_Prodi,
                                                valueCompanyCat2022_Prodi])
+    #def insert_missing_index(y,alphabet):
+        #x=pd.DataFrame(y)
+        #alphabet =pd.DataFrame(zeros, index = field)
+        #already_present_index = x.index.intersection(alphabet.index)
+        #missing_index = alphabet.index.difference(x.index)
+        #x = pd.concat([y,alphabet.loc[missing_index, :]]).sort_index(ascending=True).fillna(0)
+
+    def init_company_field_data(self):
+        #KARENA DATA 2018-2020 MEMISAHKAN ANTARA KATEGORI A (BEKERJA) DAN B (BEKERJA DAN WIRAUSAHA), MAKA HARUS DIGABUNGKAN
+
+        dfCompanyField2018_rawA = self.df2018[[
+            "4. Program Studi", "A2. Bidang Usaha"]]
+        dfCompanyField2018A = dfCompanyField2018_rawA.dropna(
+            subset=["A2. Bidang Usaha"])
+        dfCompanyField2018_rawB = self.df2018[[
+            "4. Program Studi", "B2. Bidang Usaha"]]
+        dfCompanyField2018B = dfCompanyField2018_rawB.dropna(
+            subset=["B2. Bidang Usaha"])
+        
+        dfCompanyField2019_rawA = self.df2019[[
+            "4. Program Studi", "A2. Bidang Usaha"]]
+        dfCompanyField2019A = dfCompanyField2019_rawA.dropna(
+             subset=["A2. Bidang Usaha"])
+        dfCompanyField2019_rawB = self.df2019[[
+            "4. Program Studi", "B2. Bidang Usaha"]]
+        dfCompanyField2019B= dfCompanyField2019_rawB.dropna(
+             subset=["B2. Bidang Usaha"])        
+
+        dfCompanyField2020_rawA = self.df2020[[
+            "4. Program Studi", "A2. Bidang Usaha"]]
+        dfCompanyField2020A = dfCompanyField2020_rawA.dropna(
+            subset=["A2. Bidang Usaha"])
+        dfCompanyField2020_rawB = self.df2020[[
+            "4. Program Studi", "B2. Bidang Usaha"]]
+        dfCompanyField2020B = dfCompanyField2020_rawB.dropna(
+            subset= ["B2. Bidang Usaha"])
+        
+        dfCompanyField2021_raw = self.df2021[[
+            "Program Studi", "Bidang usaha bekerja"]]
+        dfCompanyField2021 = dfCompanyField2021_raw.dropna(
+            subset=["Bidang usaha bekerja"])
+
+        dfCompanyField2022_raw = self.df2022[[
+            "Program Studi", "Bidang usaha bekerja"]]
+        dfCompanyField2022 = dfCompanyField2022_raw.dropna(
+            subset=["Bidang usaha bekerja"])
+
+        dfCompanyField2018A_Prodi = dfCompanyField2018A[dfCompanyField2018A["4. Program Studi"] == self.prodi]
+        dfCompanyField2018B_Prodi = dfCompanyField2018B[dfCompanyField2018B["4. Program Studi"] == self.prodi]
+        dfCompanyField2019A_Prodi = dfCompanyField2019A[dfCompanyField2019A["4. Program Studi"] == self.prodi]
+        dfCompanyField2019B_Prodi = dfCompanyField2019B[dfCompanyField2019B["4. Program Studi"] == self.prodi]
+        dfCompanyField2020A_Prodi = dfCompanyField2020A[dfCompanyField2020A["4. Program Studi"] == self.prodi]
+        dfCompanyField2020B_Prodi = dfCompanyField2020B[dfCompanyField2020B["4. Program Studi"] == self.prodi]
+        dfCompanyField2021_Prodi = dfCompanyField2021[dfCompanyField2021["Program Studi"] == self.prodi]
+        dfCompanyField2022_Prodi = dfCompanyField2022[dfCompanyField2022["Program Studi"] == self.prodi]
+
+        valueCompanyField2018A_Prodi = dfCompanyField2018A_Prodi["A2. Bidang Usaha"].value_counts(
+        ).sort_index()
+        valueCompanyField2018B_Prodi = dfCompanyField2018B_Prodi["B2. Bidang Usaha"].value_counts(
+        ).sort_index()
+        valueCompanyField2019A_Prodi = dfCompanyField2019A_Prodi["A2. Bidang Usaha"].value_counts(
+        ).sort_index()
+        valueCompanyField2019B_Prodi = dfCompanyField2019B_Prodi["B2. Bidang Usaha"].value_counts(
+        ).sort_index()
+        valueCompanyField2020A_Prodi = dfCompanyField2020A_Prodi["A2. Bidang Usaha"].value_counts(
+        ).sort_index()
+        valueCompanyField2020B_Prodi = dfCompanyField2020B_Prodi["B2. Bidang Usaha"].value_counts(
+        ).sort_index()
+
+        valueCompanyField2018_Prodi = valueCompanyField2018A_Prodi.add(valueCompanyField2018B_Prodi, fill_value = 0 )
+        valueCompanyField2019_Prodi = valueCompanyField2019A_Prodi.add(valueCompanyField2019B_Prodi, fill_value = 0 )
+        valueCompanyField2020_Prodi = valueCompanyField2020A_Prodi.add(valueCompanyField2020B_Prodi, fill_value = 0 )
+
+        valueCompanyField2021_Prodi = dfCompanyField2021_Prodi["Bidang usaha bekerja"].value_counts(
+        ).sort_index()
+        valueCompanyField2022_Prodi = dfCompanyField2022_Prodi["Bidang usaha bekerja"].value_counts(
+        ).sort_index()
+
+
+        
+
+        
+       
